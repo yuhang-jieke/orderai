@@ -1,0 +1,35 @@
+Nacos:
+  Addr: "115.190.57.118"
+  Prot: 8848
+  Namespace: ""
+  DataId: "demo-config"
+  Group: "DEFAULT_GROUP"
+
+Mysql:
+  Host: "115.190.57.118"
+  Port: 3306
+  User: "root"
+  Password: "4ay1nkal3u8ed77y"
+  Database: "week3"
+Redis:
+  Host: "115.190.57.118"
+  Port: 6379
+  Password: "4ay1nkal3u8ed77y"
+  Database: 0
+Consul:
+  address: "115.190.57.118:8500"
+  token: ""
+  scheme: "http"
+  service_name: "user-service"
+  service_id: ""
+  service_port: 8081
+  service_addr: ""
+  ttl: "5s"
+  check_timeout: "3s"
+  deregister_after: "30s"
+  tags:
+    - "grpc"
+    - "v1.0"
+  meta:
+    protocol: "grpc"
+    version: "1.0.0"

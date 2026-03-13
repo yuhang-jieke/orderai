@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+option go_package ="./";
+
+package ecommerce;
+
+// ------------------------------------ 
+// Messages
+// ------------------------------------ 
+
+//--------------------------------orders--------------------------------
+message Orders {
+  string name = 1; //订单名称
+  int64 num = 2; //订单数量
+  double price = 3; //订单金额
+  int64 id = 4; //id
+}
+
+message AddOrdersReq {
+  string name = 1; //订单名称
+  int64 num = 2; //订单数量
+  double price = 3; //订单金额
+}
+
+message AddOrdersResp {
+  string message =1;
+}
+
+message UpdateOrdersReq {
+  double price = 1; //订单金额
+  int64 id = 2; //id
+}
+
+message UpdateOrdersResp {
+  string message =1;
+}
+
+message DelOrdersReq {
+  int64 id = 1; //id
+}
+
+message DelOrdersResp {
+  string message =1;
+}
+
+message GetOrdersByIdReq {
+  int64 id = 1; //id
+}
+
+message GetOrdersByIdResp {
+  Orders orders = 1; //orders
+}
+
+message SearchOrdersReq {
+  int64 page = 1; //page
+  int64 size =2;
+  string name =3;
+  int64 id =4;
+  float min_price =5;
+  float max_price =6;
+}
+
+message SearchOrdersResp {
+  repeated Orders orders = 1; //orders
+}
+
+
+
+// ------------------------------------ 
+// Rpc Func
+// ------------------------------------ 
+
+service EcommerceService{ 
+
+	 //-----------------------orders----------------------- 
+	 rpc AddOrders(AddOrdersReq) returns (AddOrdersResp); 
+	 rpc UpdateOrders(UpdateOrdersReq) returns (UpdateOrdersResp); 
+	 rpc DelOrders(DelOrdersReq) returns (DelOrdersResp); 
+	 rpc GetOrdersById(GetOrdersByIdReq) returns (GetOrdersByIdResp); 
+	 rpc SearchOrders(SearchOrdersReq) returns (SearchOrdersResp); 
+
+}
